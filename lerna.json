@@ -1,0 +1,10 @@
+{
+  "version": "fixed",
+  "packages": ["frontend", "backend"],
+  "npmClient": "pnpm",
+  "command": {
+    "publish": {
+      "message": "chore(release): publish"
+    }
+  }
+}

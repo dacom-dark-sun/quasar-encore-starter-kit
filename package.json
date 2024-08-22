@@ -1,15 +1,15 @@
 {
-  "name": "encore-ts-starter",
+  "name": "monocoop",
   "private": true,
-  "version": "0.0.1",
-  "description": "Encore Typescript Starter",
-  "license": "MPL-2.0",
-  "type": "module",
-  "devDependencies": {
-    "@types/node": "^20.5.7",
-    "typescript": "^5.2.2"
-  },
   "dependencies": {
-    "encore.dev": "^1.39.6"
+    "frontend": "workspace:*",
+    "backend": "workspace:*"
+  },
+  "scripts": {
+    "dev:frontend": "lerna run dev --parallel --scope terminal",
+    "dev:backend": "lerna run dev --parallel --scope cooparser-ts --scope coopback --scope coop-notificator",
+    "testnet": "git checkout testnet && git merge dev && lerna publish prerelease && git push && git checkout dev && git merge testnet",
+    "production": "git checkout main && git merge -X theirs testnet && lerna publish --conventional-commits --conventional-graduate && git push && git checkout dev && git merge main",
+    "docs-publish": "pnpm gh-pages --nojekyll -d docs/site --repo git@github.com:coopenomics/monocoop.git"
   }
 }
