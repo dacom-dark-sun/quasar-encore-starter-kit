@@ -6,10 +6,6 @@
     "backend": "workspace:*"
   },
   "scripts": {
-    "dev:frontend": "lerna run dev --parallel --scope terminal",
-    "dev:backend": "lerna run dev --parallel --scope cooparser-ts --scope coopback --scope coop-notificator",
-    "testnet": "git checkout testnet && git merge dev && lerna publish prerelease && git push && git checkout dev && git merge testnet",
-    "production": "git checkout main && git merge -X theirs testnet && lerna publish --conventional-commits --conventional-graduate && git push && git checkout dev && git merge main",
-    "docs-publish": "pnpm gh-pages --nojekyll -d docs/site --repo git@github.com:coopenomics/monocoop.git"
+    "gen": "cd backend && encore gen client --output=../frontend/src/shared/api/client.ts --env=local"
   }
 }
